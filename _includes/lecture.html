@@ -1,0 +1,76 @@
+{% assign entered_lecture = false %}
+
+{% for lecture in site.lectures %}
+{% if lecture.key == include.key %}
+{% assign entered_lecture = true %}
+<div class="lecture">
+  <!-- When there is no lecture number, don't  print lecture -->
+
+  <div style="display:block; height:30px;">
+    <h3> {{lecture.topic }}</h3>
+  </div>
+
+  <p><b>{{lecture.description}}</b></p>
+  {% if include.intro-assignment %}
+  <p><b>Introduction to <a href="{{include.intro-assignment-url}}">{{ include.intro-assignment }}</a>.</b></p>
+  {% endif %}
+  {% if lecture.guest %}
+  Guest lecturer: <a href="{{lecture.guest-url}}">{{ lecture.guest }}</a>
+  {% endif %}
+
+  {% assign path = '/assets/slides/' %}
+
+  {% if lecture.slides %}
+  {% for static_file in site.static_files %}
+    {% assign file_and_path = path | append: lecture.slides %}
+    {% if static_file.path == file_and_path %}
+    <p><a href="{{ site.baseurl }}{{file_and_path}}">Download slides</a></p>
+    {% endif %}
+    {% endfor %}
+   
+
+{% endif %}
+
+{% if lecture.interactive-content %}
+{% for link in lecture.interactive-content %}
+{{ link | markdownify}}
+{% endfor %}
+{% endif %}
+
+ 
+
+
+  <div style="margin-top: 10px">
+    {% if lecture.mandatory-reading != "" %}
+
+    <h4>Mandatory reading</h4>
+    {{ lecture.mandatory-reading | markdownify}}
+    {% endif %}
+
+    {% if lecture.recommended-reading != "" %}
+    <h4>Recommended reading</h4>
+    {{ lecture.recommended-reading | markdownify}}
+    {% endif %}
+
+
+  </div>
+
+  <!-- {% if lecture.video %}
+    <h4>Lecture Video</h4>
+    <iframe width="780" height="439" src="https://www.youtube-nocookie.com/embed/{{ lecture.video }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    {% endif %} -->
+
+
+</div>
+
+
+{% endif %}
+{% endfor %}
+
+{% if entered_lecture == false %}
+<div class="lecture">
+  <div style="display:block; height:30px;">
+    <h3>Lecture topic to be announced. </h3>
+  </div>
+</div>
+{% endif %}

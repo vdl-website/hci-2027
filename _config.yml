@@ -1,0 +1,25 @@
+# Site settings
+title: Human-Computer Interaction
+email: alex@visdesignlab.net
+description: "Human-Computer Interaction at TU Graz — Summer Semester 2027"
+footer: "© TU Graz, 2027"
+baseurl: "/hci-2027"
+url: ""
+twitter_username: 
+github_username:
+
+google_analytics: ""
+teachcenter_url: https://tc.tugraz.at/external/course/628565
+course_catalog_url: https://online.tugraz.at/tug_online/wbLv.wbShowLVDetail?pStpSpNr=628565&pSpracheNr=2
+
+# Build settings
+#markdown: kramdown
+#kramdown:
+#   input: GFM
+
+#highlighter: pygments
+
+permalink: pretty
+
+collections:
+  - lectures

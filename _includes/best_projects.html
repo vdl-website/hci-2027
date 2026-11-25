@@ -1,0 +1,24 @@
+
+{% for project in site.data.best_projects %}
+ {% if project.year == include.year %}
+  {% if project.img %}
+  <div style="height: 150px">
+    <img style="width:300px; float: right;" src="{{site.baseurl}}/assets/i/b_p/{{project.img}}">
+    {% else %}
+  <div>
+    {% endif %}
+
+    <h3 style="margin-bottom: 0.1em">{{project.project_title}}</h3>
+  
+    
+    <i>{{project.authors}}</i><br>
+    <span style="background-color: {{project.color}}; border-radius: 10px; padding: 0.2em 0.5em 0.2em 0.5em ">{{project.rank}}</span>
+  
+    {% if project.video %}
+    <a href="{{project.video}}">Project Video</a> 
+    {% endif %}
+    {% if project.website %}
+    | <a href="{{project.website}}">Project Website</a>{% endif %}
+</div>
+{% endif %}
+{% endfor %}

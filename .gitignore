@@ -1,0 +1,15 @@
+# Jekyll output and caches
+/_site/
+/.jekyll-cache/
+/.jekyll-metadata
+/.sass-cache/
+
+# Local Bundler configuration and installed gems
+/.bundle/
+/vendor/bundle/
+
+# OS and editor files
+.DS_Store
+*.swp
+*.swo
+*~
